@@ -16,13 +16,14 @@ logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(name)s - %(leve
 
 ## Import necessary modules
 try:
-    import rich
+    from rich.console import Console
+    import curses
 except ImportError:
     logger.error("necessary module missing.", exc_info=True)
     print("[ERROR]: Some important modules are missing. Please run 'pip install -r requirements.txt' to install them.For more information, please refer to the logs in the program directory.")
     sys.exit(1)
 ## Initialize the console
-console = rich.console.Console()
+console = Console()
 
 ## Import internal modules
 try:
@@ -34,7 +35,7 @@ except ImportError:
     logger.error("Internal modules missing", exc_info=True)
     sys.exit(1)
 
-def load_config() -> dict:
+def load_config() -> dict:#load config.json
     try:
         config = readFile.LoadJson("config.json")
     except FileNotFoundError:
@@ -48,29 +49,13 @@ def load_config() -> dict:
     return config
 
 
-def main():
-    while True:
-        command = console.input("[bold green]> [/bold green]")
-        console.clear()
-        if command.lower() in ["exit", "q"]:
-            console.print("[bold yellow]Exiting...[/bold yellow]")
-            break
-        elif command.lower() == "clear":
-            console.clear()
-        elif command.lower() == "help":
-            console.print("""[bold blue]Available commands:[/bold blue]
-- help: Show this help message
-- clear: Clear the console
-- exit or q: Exit the application
-- page or tp: Go to the designated page
-- post: Create a new post
-- settings: Open the settings menu
-""")
-        elif command.lower() == "settings":
-            setting.start()
-        else:
-            console.print(f"[bold red][ERROR][/bold red]: Unknown command '{command}'")
-
+def main(stdscr):
+    config = load_config()
+    # Further implementation of the main application logic goes here.
+    stdscr.addstr(0, 0, "Suolin Application Running...")
+    stdscr.refresh()
+    stdscr.getkey()
+    
 if __name__ == "__main__":
     config = load_config()
-    main()
+    curses.wrapper(main)

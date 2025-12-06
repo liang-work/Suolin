@@ -4,7 +4,7 @@ import json
 
 console = rich.console.Console()
 
-def load_config() -> dict:
+def load_config() -> dict:#load config.json
     try:
         config = readFile.LoadJson("config.json")
     except FileNotFoundError:
@@ -13,7 +13,7 @@ def load_config() -> dict:
         config = readFile.LoadJson("config.json")
     return config
 
-def start():
+def start():#settings menu
     while True:
         config = load_config()
         console.print("[bold]Function                               options[/bold]")
