@@ -233,22 +233,21 @@ body, html {
   background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></svg>');
 }
 
-/* ========== 主体区域 ========== */
+/* ========== 主体区域（Flutter Scaffold 风格，无阴影） ========== */
 .main-content {
   flex: 1;
   display: flex;
   flex-direction: column;
-  background-color: var(--md-sys-color-surface-container-low);
+  background-color: var(--md-sys-color-surface);
   min-width: 0;
 }
 
-/* ========== 顶部栏（M3 Top App Bar） ========== */
+/* ========== 顶部栏（M3 Top App Bar，elevation 0） ========== */
 .top-bar {
-  background-color: var(--md-sys-color-surface-container-high);
+  background-color: var(--md-sys-color-surface);
   padding: 16px 24px;
   border-bottom: 1px solid var(--md-sys-color-outline-variant);
-  border-radius: 0 0 var(--md-sys-shape-corner-medium) var(--md-sys-shape-corner-medium);
-  box-shadow: var(--md-sys-elevation-1);
+  border-radius: 0;
 }
 
 .top-bar h3 {
@@ -259,15 +258,13 @@ body, html {
   color: var(--md-sys-color-on-surface);
 }
 
-/* ========== 内容区（M3 表面容器） ========== */
+/* ========== 内容区（Scaffold body，纯表面色无阴影无边框） ========== */
 .content-area {
   flex: 1;
-  background-color: var(--md-sys-color-surface-container);
+  background-color: var(--md-sys-color-surface);
   padding: 24px;
-  margin: 16px;
-  border-radius: var(--md-sys-shape-corner-large);
-  border: 1px solid var(--md-sys-color-outline-variant);
-  box-shadow: var(--md-sys-elevation-1);
+  margin: 0;
+  border-radius: 0;
   color: var(--md-sys-color-on-surface);
   font-size: 14px;
   line-height: 1.5;
@@ -275,13 +272,13 @@ body, html {
   overflow: auto;
 }
 
-/* ========== 状态栏（M3 次要容器） ========== */
+/* ========== 状态栏（表面容器，无阴影） ========== */
 .status-bar {
-  background-color: var(--md-sys-color-surface-container-highest);
+  background-color: var(--md-sys-color-surface-container);
   color: var(--md-sys-color-on-surface-variant);
   padding: 12px 24px;
   border-top: 1px solid var(--md-sys-color-outline-variant);
-  border-radius: var(--md-sys-shape-corner-medium) var(--md-sys-shape-corner-medium) 0 0;
+  border-radius: 0;
   font-size: 12px;
   letter-spacing: 0.4px;
 }
