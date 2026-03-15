@@ -1,0 +1,167 @@
+# Chinese (Simplified) translations for PROJECT.
+# Copyright (C) 2024 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2024-01-01 12:00+0000\n"
+"PO-Revision-Date: 2024-01-01 12:00+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: UI/login.html:1
+msgid "登录 - Solar Network"
+msgstr "登录 - Solar Network"
+
+#: UI/login.html:18
+msgid "欢迎回来"
+msgstr "欢迎回来"
+
+#: UI/login.html:19
+msgid "使用您的 Solar Network 账户登录"
+msgstr "使用您的 Solar Network 账户登录"
+
+#: UI/login.html:25
+msgid "用户名"
+msgstr "用户名"
+
+#: UI/login.html:26
+msgid "请输入您的用户名"
+msgstr "请输入您的用户名"
+
+#: UI/login.html:31
+msgid "密码"
+msgstr "密码"
+
+#: UI/login.html:32
+msgid "请输入您的密码"
+msgstr "请输入您的密码"
+
+#: UI/login.html:36
+msgid "登录"
+msgstr "登录"
+
+#: UI/login.html:37
+msgid "使用桌面应用认证"
+msgstr "使用桌面应用认证"
+
+#: UI/index.html:1
+msgid "Solar Network"
+msgstr "Solar Network"
+
+#: UI/index.html:10
+msgid "Stable 2.4.2+77"
+msgstr "Stable 2.4.2+77"
+
+#: UI/index.html:12
+msgid "首页"
+msgstr "首页"
+
+#: UI/index.html:13
+msgid "探索"
+msgstr "探索"
+
+#: UI/index.html:14
+msgid "聊天"
+msgstr "聊天"
+
+#: UI/index.html:15
+msgid "您"
+msgstr "您"
+
+#: UI/index.html:16
+msgid "领域"
+msgstr "领域"
+
+#: UI/index.html:17
+msgid "新闻"
+msgstr "新闻"
+
+#: UI/index.html:18
+msgid "贴图"
+msgstr "贴图"
+
+#: UI/index.html:19
+msgid "相册"
+msgstr "相册"
+
+#: UI/index.html:20
+msgid "好友"
+msgstr "好友"
+
+#: UI/index.html:21
+msgid "通知"
+msgstr "通知"
+
+#: UI/index.html:26
+msgid "首页"
+msgstr "首页"
+
+#: UI/index.html:30
+msgid "主页内容区（等会再做）"
+msgstr "主页内容区（等会再做）"
+
+#: UI/index.html:34
+msgid "状态栏"
+msgstr "状态栏"
+
+#: Suolin.py:48
+msgid "用户名和密码不能为空"
+msgstr "用户名和密码不能为空"
+
+#: Suolin.py:59
+msgid "mock_token_123456"
+msgstr "mock_token_123456"
+
+#: Suolin.py:60
+msgid "mock_user_id"
+msgstr "mock_user_id"
+
+#: Suolin.py:61
+msgid "3600"
+msgstr "3600"
+
+#: Suolin.py:66
+msgid "error"
+msgstr "error"
+
+#: Suolin.py:67
+msgid "str(e)"
+msgstr "str(e)"
+
+#: Suolin.py:76
+msgid "请在桌面应用中确认认证请求"
+msgstr "请在桌面应用中确认认证请求"
+
+#: Suolin.py:81
+msgid "无效的挑战ID"
+msgstr "无效的挑战ID"
+
+#: Suolin.py:86
+msgid "认证已超时"
+msgstr "认证已超时"
+
+#: Suolin.py:96
+msgid "用户拒绝了认证请求"
+msgstr "用户拒绝了认证请求"
+
+#: Suolin.py:101
+msgid "pending"
+msgstr "pending"
+
+#: Suolin.py:106
+msgid "error"
+msgstr "error"
+
+#: Suolin.py:107
+msgid "str(e)"
+msgstr "str(e)"

@@ -1,0 +1,254 @@
+<!-- 侧边栏组件 -->
+<div class="sidebar">
+    <div class="sidebar-header">
+        <h2>Solar Network</h2>
+        <p>Stable 2.4.2+77</p>
+    </div>
+    <ul class="sidebar-menu">
+        <li class="menu-item active"><i class="icon-home"></i>{% trans %}首页{% endtrans %}</li>
+        <li class="menu-item"><i class="icon-search"></i>{% trans %}探索{% endtrans %}</li>
+        <li class="menu-item"><i class="icon-chat"></i>{% trans %}聊天{% endtrans %}</li>
+        <li class="menu-item" id="user-menu">
+            <i class="icon-user"></i>
+            <span id="user-menu-text">{% trans %}您{% endtrans %}</span>
+            <div id="user-dropdown" class="user-dropdown" style="display: none;">
+                <div id="user-info" class="user-info" style="display: none;">
+                    <div class="user-avatar"></div>
+                    <div class="user-details">
+                        <div class="user-name" id="user-display-name"></div>
+                        <div class="user-username" id="user-username"></div>
+                    </div>
+                </div>
+                <div id="auth-options" class="auth-options" style="display: none;">
+                    <button class="btn-auth" id="login-btn">{% trans %}登录{% endtrans %}</button>
+                    <button class="btn-auth" id="register-btn">{% trans %}注册{% endtrans %}</button>
+                </div>
+                <div class="dropdown-divider"></div>
+                <button class="btn-logout" id="logout-btn" style="display: none;">{% trans %}退出登录{% endtrans %}</button>
+            </div>
+        </li>
+        <li class="menu-item"><i class="icon-business"></i>{% trans %}领域{% endtrans %}</li>
+        <li class="menu-item"><i class="icon-news"></i>{% trans %}新闻{% endtrans %}</li>
+        <li class="menu-item"><i class="icon-image"></i>{% trans %}贴图{% endtrans %}</li>
+        <li class="menu-item"><i class="icon-gallery"></i>{% trans %}相册{% endtrans %}</li>
+        <li class="menu-item"><i class="icon-friends"></i>{% trans %}好友{% endtrans %}</li>
+        <li class="menu-item"><i class="icon-bell"></i>{% trans %}通知{% endtrans %}</li>
+    </ul>
+</div>
+
+<style>
+.user-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: var(--md-sys-color-surface-container-lowest);
+    border: 1px solid var(--md-sys-color-outline-variant);
+    border-radius: var(--md-sys-shape-corner-medium);
+    box-shadow: var(--md-sys-elevation-2);
+    padding: 16px;
+    z-index: 1000;
+    display: none;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--md-sys-color-outline-variant);
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--md-sys-color-secondary-container);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--md-sys-color-on-secondary-container);
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.user-details {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.user-name {
+    font-weight: 500;
+    color: var(--md-sys-color-on-surface);
+}
+
+.user-username {
+    font-size: 12px;
+    color: var(--md-sys-color-on-surface-variant);
+}
+
+.auth-options {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.btn-auth {
+    width: 100%;
+    padding: 10px 16px;
+    border: 1px solid var(--md-sys-color-outline-variant);
+    border-radius: var(--md-sys-shape-corner-medium);
+    background-color: var(--md-sys-color-surface);
+    color: var(--md-sys-color-on-surface);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s cubic-bezier(0.2, 0, 0, 1);
+}
+
+.btn-auth:hover {
+    background-color: var(--md-sys-color-surface-container-low);
+}
+
+.btn-logout {
+    width: 100%;
+    padding: 10px 16px;
+    border: 1px solid var(--md-sys-color-outline-variant);
+    border-radius: var(--md-sys-shape-corner-medium);
+    background-color: var(--md-sys-color-surface);
+    color: var(--md-sys-color-on-surface);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s cubic-bezier(0.2, 0, 0, 1);
+}
+
+.btn-logout:hover {
+    background-color: var(--md-sys-color-surface-container-low);
+}
+
+.dropdown-divider {
+    height: 1px;
+    background-color: var(--md-sys-color-outline-variant);
+    margin: 12px 0;
+}
+</style>
+
+<script>
+// 侧边栏交互逻辑
+document.addEventListener('DOMContentLoaded', function() {
+    const userMenu = document.getElementById('user-menu');
+    const userDropdown = document.getElementById('user-dropdown');
+    const userInfo = document.getElementById('user-info');
+    const authOptions = document.getElementById('auth-options');
+    const userDisplayName = document.getElementById('user-display-name');
+    const userUsername = document.getElementById('user-username');
+    const loginBtn = document.getElementById('login-btn');
+    const registerBtn = document.getElementById('register-btn');
+    const logoutBtn = document.getElementById('logout-btn');
+
+    // 点击用户菜单切换下拉框
+    userMenu.addEventListener('click', function(e) {
+        e.stopPropagation();
+        userDropdown.style.display = userDropdown.style.display === 'block' ? 'none' : 'block';
+    });
+
+    // 点击其他地方关闭下拉框
+    document.addEventListener('click', function(e) {
+        if (!userMenu.contains(e.target)) {
+            userDropdown.style.display = 'none';
+        }
+    });
+
+    // 检查登录状态
+    checkAuthStatus();
+
+    // 登录按钮点击事件
+    loginBtn.addEventListener('click', function() {
+        window.location.href = '/login';
+    });
+
+    // 注册按钮点击事件
+    registerBtn.addEventListener('click', function() {
+        // 注册功能待实现
+        alert('注册功能待实现');
+    });
+
+    // 退出登录按钮点击事件
+    logoutBtn.addEventListener('click', function() {
+        logout();
+    });
+
+    function checkAuthStatus() {
+        fetch('/api/check-token')
+            .then(response => response.json())
+            .then(data => {
+                if (data.valid) {
+                    // 已登录，显示用户信息
+                    showUserInfo();
+                } else {
+                    // 未登录，显示登录/注册选项
+                    showAuthOptions();
+                }
+            })
+            .catch(error => {
+                console.error('检查登录状态失败:', error);
+                showAuthOptions();
+            });
+    }
+
+    function showUserInfo() {
+        // 隐藏认证选项，显示用户信息和退出按钮
+        authOptions.style.display = 'none';
+        userInfo.style.display = 'flex';
+        logoutBtn.style.display = 'block';
+
+        // 获取用户信息
+        fetch('/api/user-info')
+            .then(response => response.json())
+            .then(data => {
+                if (!data.error) {
+                    userDisplayName.textContent = data.display_name || data.username || '用户';
+                    userUsername.textContent = '@' + (data.username || 'user');
+                    
+                    // 设置头像
+                    const avatar = document.querySelector('.user-avatar');
+                    const name = data.display_name || data.username || 'U';
+                    avatar.textContent = name.charAt(0).toUpperCase();
+                }
+            })
+            .catch(error => {
+                console.error('获取用户信息失败:', error);
+            });
+    }
+
+    function showAuthOptions() {
+        // 显示认证选项，隐藏用户信息和退出按钮
+        authOptions.style.display = 'flex';
+        userInfo.style.display = 'none';
+        logoutBtn.style.display = 'none';
+    }
+
+    function logout() {
+        // 清除配置文件中的token
+        fetch('/api/logout', {
+            method: 'POST'
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                // 重新加载页面
+                window.location.reload();
+            } else {
+                alert('退出登录失败');
+            }
+        })
+        .catch(error => {
+            console.error('退出登录失败:', error);
+        });
+    }
+});
+</script>

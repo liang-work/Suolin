@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% trans %}登录 - Solar Network{% endtrans %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="static/styles.css">
+    <link rel="stylesheet" href="static/login.css">
+</head>
+<body>
+    <div class="login-container">
+        <!-- 侧边栏 -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h2>Solar Network</h2>
+                <p>Stable 2.4.2+77</p>
+            </div>
+            <ul class="sidebar-menu">
+                <li class="menu-item active"><i class="icon-home"></i>{% trans %}首页{% endtrans %}</li>
+                <li class="menu-item"><i class="icon-search"></i>{% trans %}探索{% endtrans %}</li>
+                <li class="menu-item"><i class="icon-chat"></i>{% trans %}聊天{% endtrans %}</li>
+                <li class="menu-item"><i class="icon-user"></i>{% trans %}您{% endtrans %}</li>
+                <li class="menu-item"><i class="icon-business"></i>{% trans %}领域{% endtrans %}</li>
+                <li class="menu-item"><i class="icon-news"></i>{% trans %}新闻{% endtrans %}</li>
+                <li class="menu-item"><i class="icon-image"></i>{% trans %}贴图{% endtrans %}</li>
+                <li class="menu-item"><i class="icon-gallery"></i>{% trans %}相册{% endtrans %}</li>
+                <li class="menu-item"><i class="icon-friends"></i>{% trans %}好友{% endtrans %}</li>
+                <li class="menu-item"><i class="icon-bell"></i>{% trans %}通知{% endtrans %}</li>
+            </ul>
+        </div>
+
+        <!-- 登录表单区域 -->
+        <div class="login-content">
+            <div class="login-card">
+                <div class="login-header">
+                    <h1>{% trans %}欢迎回来{% endtrans %}</h1>
+                    <p>{% trans %}使用您的 Solar Network 账户登录{% endtrans %}</p>
+                </div>
+                
+                <form id="login-form" class="login-form">
+                    <div class="form-group">
+                        <label for="username">{% trans %}用户名{% endtrans %}</label>
+                        <input type="text" id="username" name="username" placeholder="{% trans %}请输入您的用户名{% endtrans %}" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">{% trans %}密码{% endtrans %}</label>
+                        <input type="password" id="password" name="password" placeholder="{% trans %}请输入您的密码{% endtrans %}" required>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="submit" class="btn-primary">{% trans %}登录{% endtrans %}</button>
+                        <button type="button" class="btn-secondary" id="auth-btn">{% trans %}使用桌面应用认证{% endtrans %}</button>
+                    </div>
+                </form>
+                
+                <div id="login-message" class="login-message"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="static/login.js"></script>
+</body>
+</html>
